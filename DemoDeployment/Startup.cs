@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System.Net.Http;
 
 namespace MVCHybridClient
 {
@@ -49,6 +51,16 @@ namespace MVCHybridClient
                 options.ResponseType = "code id_token";
                 options.Scope.Add("profile");
                 options.SaveTokens = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    NameClaimType = "name"
+                };
+                options.BackchannelHttpHandler = new HttpClientHandler()
+                {
+                    // CAUTION USING THIS !!!
+                    ServerCertificateCustomValidationCallback =
+                        HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
             });
 
             services.AddAuthorization();
