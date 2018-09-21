@@ -52,7 +52,6 @@ namespace MVCHybridClient
                 options.ClientId = "hybridclient";
                 options.ClientSecret = "hybrid_flow_secret";
                 options.ResponseType = "code id_token";
-                options.Scope.Add("scope_used_for_hybrid_flow");
                 options.Scope.Add("profile");
                 options.SaveTokens = true;
             });
@@ -78,6 +77,8 @@ namespace MVCHybridClient
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

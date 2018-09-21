@@ -59,7 +59,6 @@ namespace StsServerIdentity
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.OfflineAccess,
-                        "scope_used_for_hybrid_flow",
                         "role"
                     }
                 },
