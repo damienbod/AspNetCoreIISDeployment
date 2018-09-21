@@ -46,8 +46,6 @@ namespace StsServerIdentity
         public void ConfigureServices(IServiceCollection services)
         {
             var stsConfig = Configuration.GetSection("StsConfig");
-            var useLocalCertStore = Convert.ToBoolean(Configuration["UseLocalCertStore"]);
-            var certificateThumbprint = Configuration["CertificateThumbprint"];
 
             X509Certificate2 cert;
             cert = new X509Certificate2(Path.Combine(_environment.ContentRootPath, "damienbodserver.pfx"), "");

@@ -1,7 +1,7 @@
 ﻿@using Microsoft.Extensions.Options
 @using StsServerIdentity.Models
 @{
-    ViewData["Title"] = "StsServerIdentity Home";
+    ViewData["Title"] = "stsdemo.deployment.com";
 }
 @inject IOptions<StsConfig> OptionsStsConfig
 
@@ -15,5 +15,5 @@ else
 }
 
 <a href="@OptionsStsConfig.Value.DemoDeploymentUrl">
-    AngularClientUrl
+    demo.deployment.com
 </a>
