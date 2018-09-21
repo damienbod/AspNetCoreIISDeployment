@@ -1,0 +1,19 @@
+﻿@using Microsoft.Extensions.Options
+@using StsServerIdentity.Models
+@{
+    ViewData["Title"] = "stsdemo.deployment.com";
+}
+@inject IOptions<StsConfig> OptionsStsConfig
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h1>Hi @User.Identity.Name</h1>
+}
+else
+{
+    <br />
+}
+
+<a href="@OptionsStsConfig.Value.DemoDeploymentUrl">
+    demo.deployment.com
+</a>
