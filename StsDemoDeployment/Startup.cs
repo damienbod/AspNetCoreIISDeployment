@@ -53,7 +53,7 @@ namespace StsServerIdentity
             cert = new X509Certificate2(Path.Combine(_environment.ContentRootPath, "damienbodserver.pfx"), "");
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.Configure<StsConfig>(Configuration.GetSection("StsConfig"));
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
