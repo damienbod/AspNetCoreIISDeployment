@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
+using IdentityServer4;
 using IdentityServer4.Models;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
@@ -21,70 +22,47 @@ namespace StsServerIdentity
 
         public static IEnumerable<ApiResource> GetApiResources()
         {
-            return new List<ApiResource>
-            {
-                new ApiResource("dataEventRecords")
-                {
-                    ApiSecrets =
-                    {
-                        new Secret("dataEventRecordsSecret".Sha256())
-                    },
-                    Scopes =
-                    {
-                        new Scope
-                        {
-                            Name = "dataeventrecords",
-                            DisplayName = "Scope for the dataEventRecords ApiResource"
-                        }
-                    },
-                    UserClaims = { "role", "admin", "user", "dataEventRecords", "dataEventRecords.admin", "dataEventRecords.user" }
-                }
-            };
+            return new List<ApiResource>();
         }
 
         // clients want to access resources (aka scopes)
         public static IEnumerable<Client> GetClients(IConfigurationSection stsConfig)
         {
-            var angularClientIdTokenOnlyUrl = stsConfig["AngularClientIdTokenOnlyUrl"];
-            var angularClientUrl = stsConfig["AngularClientUrl"];
+            var demoDeploymentUrl = stsConfig["DemoDeploymentUrl"];
             // TODO use configs in app
 
             // client credentials client
             return new List<Client>
             {
-                new Client
+                 new Client
                 {
-                    ClientName = "angularclient",
-                    ClientId = "angularclient",
-                    AccessTokenType = AccessTokenType.Reference,
-                    AccessTokenLifetime = 330,// 330 seconds, default 60 minutes
-                    IdentityTokenLifetime = 30,
-                    AllowedGrantTypes = GrantTypes.Implicit,
-                    AllowAccessTokensViaBrowser = true,
-                    RedirectUris = new List<string>
-                    {
-                        "https://localhost:44311",
-                        "https://localhost:44311/silent-renew.html"
-
+                    ClientName = "hybridclient",
+                    ClientId = "hybridclient",
+                    ClientSecrets = {new Secret("hybrid_flow_secret".Sha256()) },
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    AllowOfflineAccess = true,
+                    RedirectUris = {
+                        "https://localhost:44389/signin-oidc",
+                        $"{demoDeploymentUrl}/signin-oidc"
                     },
-                    PostLogoutRedirectUris = new List<string>
-                    {
-                        "https://localhost:44311/unauthorized",
-                        "https://localhost:44311"
+                    PostLogoutRedirectUris = {
+                        "https://localhost:44389/signout-callback-oidc",
+                        $"{demoDeploymentUrl}/signout-callback-oidc"
                     },
                     AllowedCorsOrigins = new List<string>
                     {
-                        "https://localhost:44311",
-                        "http://localhost:44311"
+                        "https://localhost:44389/",
+                        $"{demoDeploymentUrl}/"
                     },
                     AllowedScopes = new List<string>
                     {
-                        "openid",
-                        "role",
-                        "profile",
-                        "email"
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        "scope_used_for_hybrid_flow",
+                        "role"
                     }
-                }
+                },
             };
         }
     }

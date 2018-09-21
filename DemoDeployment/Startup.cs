@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,6 +33,31 @@ namespace MVCHybridClient
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.Configure<AuthConfigurations>(Configuration.GetSection("AuthConfigurations"));
+
+            var authConfigurations = Configuration.GetSection("AuthConfigurations");
+            var stsServer = authConfigurations["StsServer"];
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+            })
+            .AddCookie()
+            .AddOpenIdConnect(options =>
+            {
+                options.SignInScheme = "Cookies";
+                options.Authority = stsServer;
+                options.RequireHttpsMetadata = true;
+                options.ClientId = "hybridclient";
+                options.ClientSecret = "hybrid_flow_secret";
+                options.ResponseType = "code id_token";
+                options.Scope.Add("scope_used_for_hybrid_flow");
+                options.Scope.Add("profile");
+                options.SaveTokens = true;
+            });
+
+            services.AddAuthorization();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
