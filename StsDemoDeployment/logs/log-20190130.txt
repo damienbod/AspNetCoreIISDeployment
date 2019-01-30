@@ -1,0 +1,46 @@
+2019-01-30 13:49:59.365 +01:00 [Information] Starting web host
+2019-01-30 13:50:02.569 +01:00 [Information] User profile is available. Using '"C:\Users\stduser\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-01-30 13:50:02.693 +01:00 [Information] Starting IdentityServer4 version "2.3.2.0"
+2019-01-30 13:50:02.709 +01:00 [Information] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-01-30 13:50:02.719 +01:00 [Information] Using the default authentication scheme "Identity.Application" for IdentityServer
+2019-01-30 13:50:02.719 +01:00 [Debug] Using "Identity.Application" as default ASP.NET Core scheme for authentication
+2019-01-30 13:50:02.719 +01:00 [Debug] Using "Identity.External" as default ASP.NET Core scheme for sign-in
+2019-01-30 13:50:02.719 +01:00 [Debug] Using "Identity.External" as default ASP.NET Core scheme for sign-out
+2019-01-30 13:50:02.719 +01:00 [Debug] Using "Identity.Application" as default ASP.NET Core scheme for challenge
+2019-01-30 13:50:02.719 +01:00 [Debug] Using "Identity.Application" as default ASP.NET Core scheme for forbid
+2019-01-30 13:50:03.530 +01:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:44334/  0
+2019-01-30 13:50:03.530 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:44334/  
+2019-01-30 13:50:03.563 +01:00 [Information] Request finished in 32.6531ms 200 
+2019-01-30 13:50:03.708 +01:00 [Debug] Login Url: "/Account/Login"
+2019-01-30 13:50:03.708 +01:00 [Debug] Login Return Url Parameter: "ReturnUrl"
+2019-01-30 13:50:03.708 +01:00 [Debug] Logout Url: "/Account/Logout"
+2019-01-30 13:50:03.708 +01:00 [Debug] ConsentUrl Url: "/consent"
+2019-01-30 13:50:03.708 +01:00 [Debug] Consent Return Url Parameter: "returnUrl"
+2019-01-30 13:50:03.708 +01:00 [Debug] Error Url: "/home/error"
+2019-01-30 13:50:03.708 +01:00 [Debug] Error Id Parameter: "errorId"
+2019-01-30 13:50:03.825 +01:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-01-30 13:50:03.838 +01:00 [Information] "Identity.Application" was not authenticated. Failure message: "Unprotect ticket failed"
+2019-01-30 13:50:03.871 +01:00 [Information] Executing endpoint '"StsServerIdentity.Controllers.HomeController.Index (StsDemoDeployment)"'
+2019-01-30 13:50:03.890 +01:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing action "StsServerIdentity.Controllers.HomeController.Index (StsDemoDeployment)"
+2019-01-30 13:50:03.959 +01:00 [Information] Executing action method "StsServerIdentity.Controllers.HomeController.Index (StsDemoDeployment)" - Validation state: Valid
+2019-01-30 13:50:03.961 +01:00 [Information] Executed action method "StsServerIdentity.Controllers.HomeController.Index (StsDemoDeployment)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.4271ms.
+2019-01-30 13:50:03.998 +01:00 [Information] Executing ViewResult, running view "Index".
+2019-01-30 13:50:04.930 +01:00 [Information] Executed ViewResult - view "Index" executed in 961.7779ms.
+2019-01-30 13:50:04.930 +01:00 [Information] Executed action "StsServerIdentity.Controllers.HomeController.Index (StsDemoDeployment)" in 1039.5927ms
+2019-01-30 13:50:04.930 +01:00 [Information] Executed endpoint '"StsServerIdentity.Controllers.HomeController.Index (StsDemoDeployment)"'
+2019-01-30 13:50:04.943 +01:00 [Information] Request finished in 1415.387ms 200 text/html; charset=utf-8
+2019-01-30 13:50:04.944 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:44334/css/vendor.min.css?v=HVdF3KfTsCE7cM6PznTzizeIw5ZukPLwnA0Eoc8e12s  
+2019-01-30 13:50:04.944 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:44334/css/site.min.css?v=laTFiRoOt3l4X8x8M5X6_ePMPOOuM_iJPnJYljJuV3o  
+2019-01-30 13:50:04.947 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:44334/js/vendor.min.js?v=IPo1s6NesEj1Vb3RVbeOWqeZgYvO0SwP78H1xRpU0UM  
+2019-01-30 13:50:04.948 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:44334/js/site.js?v=Ynfdc1vuMNOWZfqTj4N3SPcebazoGXiIPgtfE-b2TO4  
+2019-01-30 13:50:04.992 +01:00 [Information] Sending file. Request path: '"/js/vendor.min.js"'. Physical path: '"C:\git\damienbod\AspNetCoreIISDeployment\StsDemoDeployment\wwwroot\js\vendor.min.js"'
+2019-01-30 13:50:04.992 +01:00 [Information] Sending file. Request path: '"/css/site.min.css"'. Physical path: '"C:\git\damienbod\AspNetCoreIISDeployment\StsDemoDeployment\wwwroot\css\site.min.css"'
+2019-01-30 13:50:04.992 +01:00 [Information] Sending file. Request path: '"/css/vendor.min.css"'. Physical path: '"C:\git\damienbod\AspNetCoreIISDeployment\StsDemoDeployment\wwwroot\css\vendor.min.css"'
+2019-01-30 13:50:04.992 +01:00 [Information] Sending file. Request path: '"/js/site.js"'. Physical path: '"C:\git\damienbod\AspNetCoreIISDeployment\StsDemoDeployment\wwwroot\js\site.js"'
+2019-01-30 13:50:05.007 +01:00 [Information] Request finished in 58.8611ms 200 application/javascript
+2019-01-30 13:50:05.007 +01:00 [Information] Request finished in 59.7401ms 200 application/javascript
+2019-01-30 13:50:05.007 +01:00 [Information] Request finished in 63.0352ms 200 text/css
+2019-01-30 13:50:05.007 +01:00 [Information] Request finished in 63.1462ms 200 text/css
+2019-01-30 13:50:05.121 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:44334/favicon.ico  
+2019-01-30 13:50:05.132 +01:00 [Information] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\git\damienbod\AspNetCoreIISDeployment\StsDemoDeployment\wwwroot\favicon.ico"'
+2019-01-30 13:50:05.133 +01:00 [Information] Request finished in 11.3653ms 200 image/x-icon
